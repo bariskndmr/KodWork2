@@ -9,6 +9,7 @@ import useFetch from 'hooks/useFetch';
 
 import Styles from './Details.style';
 import PageButton from 'components/Buttons/PageButton';
+import {useDispatch} from 'react-redux';
 
 const Header = ({job}) => {
   return (
@@ -31,11 +32,11 @@ const Header = ({job}) => {
   );
 };
 
-const Buttons = () => {
+const Buttons = ({onPress}) => {
   return (
     <View style={Styles.buttons}>
       <PageButton icon="login" text="Submit" />
-      <PageButton icon="heart" text="Favorite Job" />
+      <PageButton onPress={onPress} icon="heart" text="Favorite Job" />
     </View>
   );
 };
@@ -48,6 +49,7 @@ const Details = ({route}) => {
   const {id} = route.params;
   const {data, error, loading} = useFetch(`${Config.JOBS_API_URL}/${id}`);
   const {width} = Dimensions.get('window');
+  const dispatch = useDispatch();
 
   if (error) {
     return <Error />;
@@ -59,13 +61,18 @@ const Details = ({route}) => {
   const source = {
     html: data.contents,
   };
+
+  const addFavoriteList = job => {
+    dispatch({type: 'ADD_FAVORITE', payload: {job}});
+  };
+
   return (
     <SafeAreaView style={Styles.container}>
       <Header job={data} />
       <ScrollView style={Styles.html} showsVerticalScrollIndicator={false}>
         <RenderHTML source={source} contentWidth={width} />
       </ScrollView>
-      <Buttons />
+      <Buttons onPress={() => addFavoriteList(data)} />
     </SafeAreaView>
   );
 };
