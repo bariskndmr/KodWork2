@@ -2,14 +2,14 @@ import React from 'react';
 import {ScrollView, Dimensions, SafeAreaView, Text, View} from 'react-native';
 import Config from 'react-native-config';
 import RenderHTML from 'react-native-render-html';
+import {useDispatch} from 'react-redux';
 
 import Error from 'components/Error';
 import Loading from 'components/Loading';
+import PageButton from 'components/Buttons/PageButton';
 import useFetch from 'hooks/useFetch';
 
 import Styles from './Details.style';
-import PageButton from 'components/Buttons/PageButton';
-import {useDispatch} from 'react-redux';
 
 const Header = ({job}) => {
   return (

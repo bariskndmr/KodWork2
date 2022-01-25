@@ -1,3 +1,4 @@
+import PageButton from 'components/Buttons/PageButton';
 import React from 'react';
 import {View, Text, Pressable} from 'react-native';
 
@@ -7,7 +8,7 @@ const CardText = ({style, text}) => {
   return <Text style={style}>{text}</Text>;
 };
 
-const JobCard = ({job, onSelect}) => {
+const JobCard = ({job, onSelect, isButton, onRemove}) => {
   return (
     <Pressable style={Styles.container} onPress={onSelect}>
       <CardText style={Styles.title} text={job.name} />
@@ -30,6 +31,7 @@ const JobCard = ({job, onSelect}) => {
             : 'No information'
         }
       />
+      {isButton ? <PageButton text="Remove" onPress={onRemove} /> : null}
     </Pressable>
   );
 };
