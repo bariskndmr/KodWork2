@@ -1,9 +1,16 @@
+import {createSlice} from '@reduxjs/toolkit';
 import {Alert} from 'react-native';
 
-export default (state, action) => {
-  switch (action.type) {
-    case 'ADD_FAVORITE':
-      const {job} = action.payload;
+const initialState = {
+  favoritesList: [],
+};
+
+export const favoritesSlice = createSlice({
+  name: 'favorites',
+  initialState,
+  reducers: {
+    add_favorite: (state, action) => {
+      const job = action.payload;
       const filtered = state.favoritesList.find(item => item.id === job.id);
       let newList = [];
       if (filtered) {
@@ -14,12 +21,14 @@ export default (state, action) => {
         newList = [...state.favoritesList, job];
         return {...state, favoritesList: newList};
       }
-    case 'REMOVE_FAVORITE':
-      const {id} = action.payload;
+    },
+    remove_favorite: (state, action) => {
+      const id = action.payload;
       const list = state.favoritesList.filter(item => item.id !== id);
       return {...state, favoritesList: list};
+    },
+  },
+});
 
-    default:
-      return state;
-  }
-};
+export const {add_favorite, remove_favorite} = favoritesSlice.actions;
+export default favoritesSlice.reducer;

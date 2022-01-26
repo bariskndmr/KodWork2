@@ -2,15 +2,16 @@ import React from 'react';
 import {FlatList, SafeAreaView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
+import {remove_favorite} from 'pages/Context/Reducers/Favorites';
 import JobCard from 'components/JobCard';
 
 import Styles from './Favorites.style';
 
 const Favorites = () => {
-  const favoriteList = useSelector(s => s.favoritesList);
+  const favoritesList = useSelector(state => state.favorites.favoritesList);
   const dispatch = useDispatch();
   const removeFav = id => {
-    dispatch({type: 'REMOVE_FAVORITE', payload: {id}});
+    dispatch(remove_favorite(id));
   };
 
   const renderFavorites = ({item}) => {
@@ -18,9 +19,10 @@ const Favorites = () => {
       <JobCard job={item} isButton={true} onRemove={() => removeFav(item.id)} />
     );
   };
+
   return (
     <SafeAreaView style={Styles.container}>
-      <FlatList data={favoriteList} renderItem={renderFavorites} />
+      <FlatList data={favoritesList} renderItem={renderFavorites} />
     </SafeAreaView>
   );
 };
