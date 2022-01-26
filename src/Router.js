@@ -4,7 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {Provider} from 'react-redux';
 
 import JobsStack from 'navigations/JobsStack';
-import Stores from './Pages/Context/Stores';
+import Stores from './Context/Stores';
 
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",

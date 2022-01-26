@@ -11,7 +11,7 @@ import Config from 'react-native-config';
 import RenderHTML from 'react-native-render-html';
 import {useDispatch} from 'react-redux';
 
-import {add_favorite} from 'pages/Context/Reducers/Favorites';
+import {add_favorite} from 'src/Context/Reducers/Favorites';
 import Error from 'components/Error';
 import Loading from 'components/Loading';
 import PageButton from 'components/Buttons/PageButton';
