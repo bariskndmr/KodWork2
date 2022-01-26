@@ -1,5 +1,12 @@
 import React from 'react';
-import {ScrollView, Dimensions, SafeAreaView, Text, View} from 'react-native';
+import {
+  ScrollView,
+  Dimensions,
+  SafeAreaView,
+  Text,
+  View,
+  Linking,
+} from 'react-native';
 import Config from 'react-native-config';
 import RenderHTML from 'react-native-render-html';
 import {useDispatch} from 'react-redux';
@@ -32,10 +39,10 @@ const Header = ({job}) => {
   );
 };
 
-const Buttons = ({onPress}) => {
+const Buttons = ({onPress, onSubmit}) => {
   return (
     <View style={Styles.buttons}>
-      <PageButton icon="login" text="Submit" />
+      <PageButton onPress={onSubmit} icon="login" text="Submit" />
       <PageButton onPress={onPress} icon="heart" text="Favorite Job" />
     </View>
   );
@@ -66,13 +73,20 @@ const Details = ({route}) => {
     dispatch({type: 'ADD_FAVORITE', payload: {job}});
   };
 
+  const handleSubmit = item => {
+    Linking.openURL(item.refs.landing_page);
+  };
+
   return (
     <SafeAreaView style={Styles.container}>
       <Header job={data} />
       <ScrollView style={Styles.html} showsVerticalScrollIndicator={false}>
         <RenderHTML source={source} contentWidth={width} />
       </ScrollView>
-      <Buttons onPress={() => addFavoriteList(data)} />
+      <Buttons
+        onSubmit={() => handleSubmit(data)}
+        onPress={() => addFavoriteList(data)}
+      />
     </SafeAreaView>
   );
 };
