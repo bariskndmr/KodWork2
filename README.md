@@ -16,6 +16,7 @@ My second KodWork work. This one is my best practice.
 - [Axios](https://github.com/axios/axios) for data fetching.
 - [babel-plugin-module-resolver](https://github.com/tleunen/babel-plugin-module-resolver) .
 - [React-Native-config](https://github.com/luggit/react-native-config) .
+- [Redux-Toolkit](https://redux-toolkit.js.org/) .
 
 # Setup
 
