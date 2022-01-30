@@ -21,6 +21,6 @@ My second KodWork work. This one is my best practice.
 # Setup
 
 - Install [React Native](https://reactnative.dev/docs/getting-started)
-- Run on your terminal 'git clone https://github.com/bariskndmr/Tarifka.git'
+- Run on your terminal 'git clone https://github.com/bariskndmr/KodWork2.git'
 - Run in root directory with terminal 'npm install'
 - Run 'npx react-natice run-ios/run-android' when 'npm install' finished
