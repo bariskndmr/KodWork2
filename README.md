@@ -1,6 +1,6 @@
 # KodWork2
 
-Tarifka app for React-Native course on [Patika](https://app.patika.dev)
+Kodwork app for React-Native course on [Patika](https://app.patika.dev)
 
 My second KodWork work. This one is my best practice.
 
