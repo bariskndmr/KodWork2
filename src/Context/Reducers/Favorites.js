@@ -9,7 +9,7 @@ export const favoritesSlice = createSlice({
   name: 'favorites',
   initialState,
   reducers: {
-    add_favorite: (state, action) => {
+    adaFavorite: (state, action) => {
       const job = action.payload;
       const filtered = state.favoritesList.find(item => item.id === job.id);
       let newList = [];
@@ -22,7 +22,7 @@ export const favoritesSlice = createSlice({
         return {...state, favoritesList: newList};
       }
     },
-    remove_favorite: (state, action) => {
+    removeFavorite: (state, action) => {
       const id = action.payload;
       const list = state.favoritesList.filter(item => item.id !== id);
       return {...state, favoritesList: list};
@@ -30,5 +30,5 @@ export const favoritesSlice = createSlice({
   },
 });
 
-export const {add_favorite, remove_favorite} = favoritesSlice.actions;
+export const {addFavorite, removeFavorite} = favoritesSlice.actions;
 export default favoritesSlice.reducer;
