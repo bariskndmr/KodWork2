@@ -9,7 +9,7 @@ export const favoritesSlice = createSlice({
   name: 'favorites',
   initialState,
   reducers: {
-    adaFavorite: (state, action) => {
+    addFavorite: (state, action) => {
       const job = action.payload;
       const filtered = state.favoritesList.find(item => item.id === job.id);
       let newList = [];
